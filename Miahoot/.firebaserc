@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "miahoot-80416": {
+      "hosting": {
+        "Miahoot": [
+          "miahoot-80416"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "miahoot-80416"
+  }
+}
