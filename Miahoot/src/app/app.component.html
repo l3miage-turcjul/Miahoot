@@ -1,9 +1,13 @@
 <mat-toolbar>
-    <p>
-        Auth!
-        <code>{{ (user | async)?.uid }}</code>
-        <button (click)="login()" *ngIf="showLoginButton">Log in with Google</button>
-        <button (click)="logout()" *ngIf="showLogoutButton">Log out</button>
-      </p>
+      <ng-container *ngIf="user | async as US; else nonlog">
+        <img class="bar" [src]="US.photoURL">
+        {{US.displayName}}
+        <button mat-raised-button color="accent" (click)="logout()">Log out</button>
+        <button mat-icon-button (click)="this.goToPage('/accountConfig')"><mat-icon>manage_accounts</mat-icon></button>
+      </ng-container>
+      <ng-template #nonlog>
+        <button mat-raised-button color="accent" (click)="login()">Log-In</button>
+      </ng-template>
 </mat-toolbar>
+<mat-spinner class="charging" *ngIf="isCharging"></mat-spinner>
 <router-outlet></router-outlet>
